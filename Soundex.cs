@@ -13,12 +13,7 @@ public class Soundex
         StringBuilder soundex = new StringBuilder();
         soundex.Append(char.ToUpper(name[0]));
         AppendSoundexValue(name,soundex);
-        while (soundex.Length < 4)
-        {
-            soundex.Append('0');
-        }
-
-        return soundex.ToString();
+        return soundex.ToString().PadRight(4, '0');
     }
 
     private static void AppendSoundexValue(string name, StringBuilder soundex)
