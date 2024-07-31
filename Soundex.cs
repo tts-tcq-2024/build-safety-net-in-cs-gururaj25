@@ -16,29 +16,44 @@ public class Soundex
         return soundex.ToString().PadRight(4, '0');
     }
 
-
-    private static void AppendSoundexValue(string name, StringBuilder soundex)
+  private static void AppendSoundexValue(string name, StringBuilder soundex)
 {
     if (string.IsNullOrEmpty(name)) return;
 
     soundex.Append(char.ToUpper(name[0]));
     char prevCode = GetSoundexCode(name[0]);
 
+    AppendRemainingSoundexValues(name, soundex, prevCode);
+
+    EnsureSoundexLength(soundex);
+}
+
+private static void AppendRemainingSoundexValues(string name, StringBuilder soundex, char prevCode)
+{
     for (int i = 1; i < name.Length && soundex.Length < 4; i++)
     {
         char code = GetSoundexCode(name[i]);
-        bool isValidCode = code != '0' && code != prevCode;
-
-        soundex.Append(isValidCode ? code : '0');
+        if (IsValidCode(code, prevCode))
+        {
+            soundex.Append(code);
+        }
         prevCode = code;
     }
+}
 
-    // Ensure the Soundex code has a length of 4
+private static bool IsValidCode(char code, char prevCode)
+{
+    return code != '0' && code != prevCode;
+}
+
+private static void EnsureSoundexLength(StringBuilder soundex)
+{
     while (soundex.Length < 4)
     {
         soundex.Append('0');
     }
 }
+    
     
     private static char GetSoundexCode(char c)
     {
