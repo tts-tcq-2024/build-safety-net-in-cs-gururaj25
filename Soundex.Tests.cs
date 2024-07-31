@@ -11,42 +11,42 @@ public class SoundexTests
     [Fact]
     public void HandlesSingleCharacter()
     {
-        Assert.Equal("A000", Soundex.GenerateSoundex("A"));
+        Assert.Equal("AA00", Soundex.GenerateSoundex("A"));
     }
      [Fact]
-    public void HandlesName_A261()
+    public void HandlesName_AA20()
     {
-        Assert.Equal("A261", Soundex.GenerateSoundex("Ash"));
+        Assert.Equal("AA20", Soundex.GenerateSoundex("Ash"));
     }
     [Fact]
-    public void HandlesName_H555()
+    public void HandlesName_HH55()
     {
-        Assert.Equal("H555", Soundex.GenerateSoundex("Honeyman"));
+        Assert.Equal("HH55", Soundex.GenerateSoundex("Honeyman"));
     }
      [Fact]
-    public void HandlesName_P236()
+    public void HandlesName_PP23()
     {
-        Assert.Equal("P236", Soundex.GenerateSoundex("Pfister"));
+        Assert.Equal("PP23", Soundex.GenerateSoundex("Pfister"));
     }
     [Fact]
-    public void HandlesName_T522()
+    public void HandlesName_TT52()
     {
-        Assert.Equal("T522", Soundex.GenerateSoundex("Tymczak"));
+        Assert.Equal("TT52", Soundex.GenerateSoundex("Tymczak"));
     }
     [Fact]
-    public void HandlesName_R150()
+    public void HandlesName_RR15()
     {
-        Assert.Equal("R150", Soundex.GenerateSoundex("Rubin"));
+        Assert.Equal("RR15", Soundex.GenerateSoundex("Rubin"));
     }
     [Fact]
-    public void HandlesName_R163_1()
+    public void HandlesName_RR16_1()
     {
-        Assert.Equal("R163", Soundex.GenerateSoundex("Rupert"));
+        Assert.Equal("RR16", Soundex.GenerateSoundex("Rupert"));
     }
     [Fact]
-    public void HandlesName_R163_2()
+    public void HandlesName_RR16_2()
     {
-        Assert.Equal("R163", Soundex.GenerateSoundex("Robert"));
+        Assert.Equal("RR16", Soundex.GenerateSoundex("Robert"));
     }
    /*
    Using this algorithm, both "Robert" and "Rupert" return the same string "R163" while "Rubin" yields "R150". "Ashcraft" and "Ashcroft" both yield "A261". 
