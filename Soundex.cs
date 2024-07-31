@@ -32,13 +32,18 @@ private static void AppendRemainingSoundexValues(string name, StringBuilder soun
 {
     for (int i = 1; i < name.Length && soundex.Length < 4; i++)
     {
-        char code = GetSoundexCode(name[i]);
-        if (IsValidCode(code, prevCode))
-        {
-            soundex.Append(code);
-        }
-        prevCode = code;
+        AppendSoundexCharacter(name[i], soundex, ref prevCode);
     }
+}
+
+private static void AppendSoundexCharacter(char character, StringBuilder soundex, ref char prevCode)
+{
+    char code = GetSoundexCode(character);
+    if (IsValidCode(code, prevCode))
+    {
+        soundex.Append(code);
+    }
+    prevCode = code;
 }
 
 private static bool IsValidCode(char code, char prevCode)
